@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Pranjal360Agarwal/RideSphere#readme",
   "dependencies": {
     "express": "^5.2.1",
+    "express-http-proxy": "^2.1.2",
     "morgan": "^1.10.1"
   }
 }
