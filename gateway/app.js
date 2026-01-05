@@ -8,7 +8,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // Simple logger to inspect incoming requests at the gateway
 app.use((req, res, next) => {
-  console.log("Gateway incoming:", req.method, req.originalUrl, "body:", req.body);
+  console.log(
+    "Gateway incoming:",
+    req.method,
+    req.originalUrl,
+    "body:",
+    req.body
+  );
   next();
 });
 
@@ -24,7 +30,11 @@ const createProxyOptions = () => ({
     let bodyString;
     if (bodyContent && Buffer.isBuffer(bodyContent)) {
       bodyString = bodyContent.toString();
-    } else if (bodyContent && bodyContent.type === "Buffer" && Array.isArray(bodyContent.data)) {
+    } else if (
+      bodyContent &&
+      bodyContent.type === "Buffer" &&
+      Array.isArray(bodyContent.data)
+    ) {
       // express-http-proxy may present a Buffer as { type: 'Buffer', data: [...] }
       bodyString = Buffer.from(bodyContent.data).toString();
     } else {
@@ -54,7 +64,10 @@ const createProxyOptions = () => ({
 });
 
 app.use("/user", expressProxy("http://localhost:3001", createProxyOptions()));
-app.use("/captain", expressProxy("http://localhost:3002", createProxyOptions()));
+app.use(
+  "/captain",
+  expressProxy("http://localhost:3002", createProxyOptions())
+);
 
 app.listen(3000, () => {
   console.log("API Gateway is running on http://localhost:3000");
