@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Pranjal360Agarwal/RideSphere#readme",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "express-http-proxy": "^2.1.2",
