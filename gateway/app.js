@@ -68,6 +68,7 @@ app.use(
   "/captain",
   expressProxy("http://localhost:3002", createProxyOptions())
 );
+app.use("/ride", expressProxy("http://localhost:3003", createProxyOptions()));
 
 app.listen(3000, () => {
   console.log("API Gateway is running on http://localhost:3000");
